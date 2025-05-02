@@ -1,7 +1,7 @@
 import React from "react";
 import { MdDashboard, MdMessage, MdRateReview, MdQuiz, MdSettings, MdLogout, MdPerson } from "react-icons/md";
 import { BiBookBookmark } from "react-icons/bi";
-import Main from "./Main";
+import Main from "./Overview";
 
 export default function Dashboard() {
   return (
