@@ -1,8 +1,9 @@
 import React from "react";
 import img1 from "../assets/img.jpg";
-import { FaStar, FaArrowRight } from "react-icons/fa";
+
 import { FaBook, FaUserGraduate, FaMoneyBillWave } from "react-icons/fa";
 import {LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid} from 'recharts';
+import { FaStar, FaUser, FaBookOpen, FaRegCommentDots } from "react-icons/fa";
 
 const data = [
   { month: 'Jan', students: 100 },
@@ -17,6 +18,32 @@ const data = [
   { month: 'Oct', students: 900 },
   { month: 'Nov', students: 850 },
   { month: 'Dec', students: 780 },
+];
+
+
+const instructors = Array(6).fill({
+  name: "Sanki Jho",
+  reviews: "25,895 Reviews",
+  courses: "15+ Courses",
+  students: "692 Students",
+  avatar: "https://i.pravatar.cc/40?img=3",
+});
+
+const notifications = [
+  "Account has been created successfully.",
+  "Successfully applied for a job Developer.",
+  "Multi vendor course updated successfully.",
+  "HTML course updated successfully.",
+  "HTML course updated successfully.",
+  "HTML course updated successfully.",
+  "JavaScript course updated successfully.",
+];
+
+const feedbacks = [
+  { name: "JavaScript", enrolled: "1,200", rating: 4.1 },
+  { name: "PHP", enrolled: "1,500", rating: 3.9 },
+  { name: "Graphics Designer", enrolled: "2,500", rating: 4.7 },
+  { name: "Data Science", enrolled: "2,290", rating: 4.5 },
 ];
 
 function EnrolledCoursesChart() {
@@ -100,6 +127,83 @@ const Main = () => {
         <div className="bg-gray-100 rounded flex items-center justify-center text-gray-400">
           <EnrolledCoursesChart/>
         </div>
+
+        <div className="p-6 space-y-6">
+      {/* Top Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        {/* Popular Instructor */}
+        <div className="bg-white p-4 rounded-lg shadow-sm border">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="font-semibold text-lg">Popular Instructor</h3>
+            <span className="text-sm text-gray-400 cursor-pointer">See More...</span>
+          </div>
+          <div className="space-y-4">
+            {instructors.map((inst, idx) => (
+              <div key={idx} className="flex items-center gap-3">
+                <img src={inst.avatar} alt="avatar" className="w-10 h-10 rounded-full" />
+                <div className="text-sm space-y-1">
+                  <p className="font-semibold">{inst.name}</p>
+                  <div className="flex gap-3 text-gray-500 text-xs items-center">
+                    <span className="flex items-center gap-1"><FaRegCommentDots /> {inst.reviews}</span>
+                    <span className="flex items-center gap-1"><FaBookOpen /> {inst.courses}</span>
+                    <span className="flex items-center gap-1"><FaUser /> {inst.students}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Notifications */}
+        <div className="bg-white p-4 rounded-lg shadow-sm border">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="font-semibold text-lg">Notifications</h3>
+            <span className="text-sm text-gray-400 cursor-pointer">See More...</span>
+          </div>
+          <div className="space-y-3 text-sm text-gray-700">
+            {notifications.map((note, idx) => (
+              <div key={idx}>
+                <p>{note}</p>
+                <span className="text-xs text-gray-400">{(idx + 1)} Hour Ago</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Recent Feedbacks */}
+      <div className="bg-white p-4 rounded-lg shadow-sm border">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="font-semibold text-lg">Recent Feedbacks</h3>
+          <span className="text-sm text-gray-400 cursor-pointer">See More...</span>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-sm">
+            <thead className="bg-blue-50 text-gray-700 text-left">
+              <tr>
+                <th className="px-4 py-2">Course Name</th>
+                <th className="px-4 py-2">Enrolled</th>
+                <th className="px-4 py-2">Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              {feedbacks.map((item, idx) => (
+                <tr
+                  key={idx}
+                  className={idx % 2 === 0 ? "bg-white" : "bg-blue-50"}
+                >
+                  <td className="px-4 py-2">{item.name}</td>
+                  <td className="px-4 py-2">{item.enrolled}</td>
+                  <td className="px-4 py-2 flex items-center gap-1">
+                    <FaStar className="text-yellow-400" /> {item.rating}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
     </>
   );
 };
