@@ -10,6 +10,7 @@ import {
   MdPerson,
 } from "react-icons/md";
 import { BiBookBookmark } from "react-icons/bi";
+import { FaCreditCard } from "react-icons/fa";
 
 export default function Dashboard() {
   const linkClass = "flex items-center space-x-2 p-2 rounded hover:bg-blue-100";
@@ -79,6 +80,26 @@ export default function Dashboard() {
           >
             <MdQuiz />
             <span>Quiz Attempt</span>
+          </NavLink>
+
+          <NavLink
+            to="/category"
+            className={({ isActive }) =>
+              `${linkClass} ${isActive ? activeClass : ""}`
+            }
+          >
+            <MdSettings />
+            <span>Category</span>
+          </NavLink>
+
+          <NavLink
+            to="/payment"
+            className={({ isActive }) =>
+              `${linkClass} ${isActive ? activeClass : ""}`
+            }
+          >
+            <FaCreditCard />
+            <span>Payment History</span>
           </NavLink>
 
           <hr className="my-4" />
