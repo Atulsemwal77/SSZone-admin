@@ -5,7 +5,7 @@ import { FaStar, FaArrowRight } from "react-icons/fa";
 const Abc = () => {
   return (
     <>
-     <div className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-10 rounded-xl flex justify-between items-center mb-6 ">
+     <div className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-10 rounded-xl flex justify-between items-center mb-6 flex-col md:flex-row">
             <div className="flex items-center gap-2">
               <img
                 src={img1}
