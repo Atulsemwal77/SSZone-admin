@@ -2,6 +2,47 @@ import React from "react";
 import img1 from "../assets/img.jpg";
 import { FaStar, FaArrowRight } from "react-icons/fa";
 import { FaBook, FaUserGraduate, FaMoneyBillWave } from "react-icons/fa";
+import {LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid} from 'recharts';
+
+const data = [
+  { month: 'Jan', students: 100 },
+  { month: 'Feb', students: 250 },
+  { month: 'Mar', students: 300 },
+  { month: 'Apr', students: 640 },
+  { month: 'May', students: 1200 },
+  { month: 'Jun', students: 900 },
+  { month: 'Jul', students: 600 },
+  { month: 'Aug', students: 700 },
+  { month: 'Sept', students: 800 },
+  { month: 'Oct', students: 900 },
+  { month: 'Nov', students: 850 },
+  { month: 'Dec', students: 780 },
+];
+
+function EnrolledCoursesChart() {
+  return (
+    <div className="bg-white p-4 rounded-xl shadow-md w-full">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-lg font-semibold text-gray-700">Courses Enrolled Status</h2>
+        <select className="border text-sm rounded px-2 py-1">
+          <option>HTML</option>
+          <option>React</option>
+          <option>JS</option>
+        </select>
+      </div>
+
+      <ResponsiveContainer width="100%" height={200}>
+        <LineChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="month" />
+          <YAxis />
+          <Tooltip />
+          <Line type="monotone" dataKey="students" stroke="#3b82f6" strokeWidth={3} dot={{ r: 4 }} />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
 
 const Main = () => {
   return (
@@ -55,19 +96,10 @@ const Main = () => {
       </div>
 
       {/* Courses Enrolled Status (Placeholder) */}
-      <div className="bg-white p-6 rounded shadow">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="font-semibold text-lg">Courses Enrolled Status</h3>
-          <select className="border px-2 py-1 rounded">
-            <option>HTML</option>
-            <option>CSS</option>
-            <option>React</option>
-          </select>
+
+        <div className="bg-gray-100 rounded flex items-center justify-center text-gray-400">
+          <EnrolledCoursesChart/>
         </div>
-        <div className="h-40 bg-gray-100 rounded flex items-center justify-center text-gray-400">
-          [Chart Placeholder]
-        </div>
-      </div>
     </>
   );
 };
